@@ -11,6 +11,7 @@
     <title>Department 03</title>
 </head>
 <body>
+<a href="/logout">Logout</a>
 <a href="/report" target="_blank">Report section</a>
 </body>
 </html>

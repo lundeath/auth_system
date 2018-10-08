@@ -32,7 +32,7 @@ public class AuthenticationServlet extends HttpServlet {
 
         try { //managing connection to database
             connection = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/msql", "root", "1234");
+                    .getConnection("jdbc:mysql://localhost:3306/msql", "root", "root");
             Class.forName("com.mysql.jdbc.Driver");
             statement = connection.createStatement();
             String query = "select * from users";
@@ -50,9 +50,9 @@ public class AuthenticationServlet extends HttpServlet {
             }
 
             if (isValid) { //checking correctness of validation and redirecting to proper department
-                //each user gets token based on department number
-                String encodedDepartment = Scrambler.base64encode(userDepartment);
-                response.sendRedirect(request.getContextPath() + "/dep/?depToken=" + encodedDepartment);
+                String depURL = "/WEB-INF/pages/departments/dep_0" + userDepartment + ".jsp"; //creating url to proper department
+
+                request.getRequestDispatcher(depURL).forward(request, response);
             } else {
                 request.setAttribute("message", "Incorrect login or password");
                 request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);

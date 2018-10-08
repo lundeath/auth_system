@@ -42,6 +42,17 @@
         <url-pattern>/report</url-pattern>
     </servlet-mapping>
 
+<servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.global.ukrainets.controller.LogoutController</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>SessionManagementWebFilter</filter-name>
         <filter-class>com.global.ukrainets.filter.SessionManagementWebFilter</filter-class>
